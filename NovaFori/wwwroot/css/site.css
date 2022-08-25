@@ -1,0 +1,66 @@
+﻿/*input[type='submit'], button, [aria-label] {
+    cursor: pointer;
+}
+
+#editForm {
+    display: none;
+}*/
+
+table {
+    font-family: Arial, sans-serif;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f8f8f8;
+    padding: 5px;
+    border: 1px solid;
+}
+
+td {
+    border: 1px solid;
+    padding: 5px;
+}
+
+/** {
+    box-sizing: border-box;
+}
+*/
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/*table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}*/
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
