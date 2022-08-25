@@ -29,11 +29,28 @@ var TodoViewModel = function () {
             data: ko.toJSON(TodoData),
             contentType: "application/json",
             success: function (data) {
-                console.log("Added ");
+                console.log("Added");
                 GetTodoList();
             },
-            error: function () {
-                console.log("Failed");
+            error: function (error) {
+                console.log(error.status + "<!----!>" + error.statusText);
+            }
+        });
+    };
+
+    self.update = function (item) {
+        var url = `${uri}/${item.id}`;
+        $.ajax({
+            type: "PUT",
+            url: url,
+            data: ko.toJSON(item),
+            contentType: "application/json",
+            success: function (data) {
+                console.log("Updated");
+                GetTodoList();
+            },
+            error: function (error) {
+                console.log(error.status + "<!----!>" + error.statusText);
             }
         });
     };
