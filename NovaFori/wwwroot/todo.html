@@ -11,6 +11,12 @@
 <body>
     <h1>To-do NovaFori</h1>
 
+    <h3>Add</h3>
+    <form>
+        <input type="text" placeholder="New to-do" data-bind="textInput: $root.Description">
+        <button data-bind="click: $root.save">Save</button>
+    </form>
+    <br />
     <div class="row">
         <div class="column">
             <h3>Pending</h3>
@@ -24,9 +30,8 @@
                 <tbody data-bind="foreach: $root.PendingTodos">
                     <tr>
                         <td><span data-bind="text: description"></span></td>
-                        <td><input type="checkbox" data-bind="checked: isComplete"/></td>
-                        <td><button data-bind="click: $root.update.bind($data)">Update</button>
-</td>
+                        <td><input type="checkbox" data-bind="checked: isComplete" /></td>
+                        <td><button data-bind="click: $root.update.bind($data)">Update</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -43,7 +48,7 @@
                 <tbody data-bind="foreach: $root.CompletedTodos">
                     <tr>
                         <td><span data-bind="text: description"></span></td>
-                        <td><input type="checkbox" data-bind="checked: isComplete"/></td>
+                        <td><input type="checkbox" data-bind="checked: isComplete" /></td>
                         <td><button data-bind="click: $root.update.bind($data)">Update</button></td>
                     </tr>
                 </tbody>

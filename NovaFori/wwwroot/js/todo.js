@@ -21,6 +21,23 @@ var TodoViewModel = function () {
     //Call the Function which gets all todos using ajax call  
     GetTodoList();
 
+    self.save = function () {
+        //Ajax call to add a to-do
+        $.ajax({
+            type: "POST",
+            url: uri,
+            data: ko.toJSON(TodoData),
+            contentType: "application/json",
+            success: function (data) {
+                console.log("Added ");
+                GetTodoList();
+            },
+            error: function () {
+                console.log("Failed");
+            }
+        });
+    };
+
     function GetTodoList() {
         $.ajax({
             type: "GET",
@@ -28,11 +45,11 @@ var TodoViewModel = function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                self.PendingTodos(self.TodoList().filter(x => !x.isComplete));
-                self.CompletedTodos(self.TodoList().filter(x => x.isComplete));
+                self.PendingTodos(data.filter(x => !x.isComplete));
+                self.CompletedTodos(data.filter(x => x.isComplete));
             },
             error: function (error) {
-                console,log(error.status + "<--and--> " + error.statusText);
+                console.log(error.status + "<--and--> " + error.statusText);
             }
         });
     }
