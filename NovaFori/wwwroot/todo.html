@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>To-do NovaFori</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
     <link rel="stylesheet" href="css/site.css" />
 </head>
 
@@ -12,37 +14,38 @@
     <div class="row">
         <div class="column">
             <h3>Pending</h3>
-            <table>
+            <table data-bind="visible: $root.PendingTodos().length > 0">
                 <tr>
                     <th>Description</th>
                     <th>Is Complete?</th>
                     <th></th>
                     <th></th>
                 </tr>
-                <tbody>
+                <tbody data-bind="foreach: $root.PendingTodos">
                     <tr>
-                        <td><span></span></td>
-                        <td><input type="checkbox" /></td>
-                        <td><button>Update</button></td>
+                        <td><span data-bind="text: description"></span></td>
+                        <td><input type="checkbox" data-bind="checked: isComplete"/></td>
+                        <td><button data-bind="click: $root.update.bind($data)">Update</button>
+</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="column">
             <h3>Complete</h3>
-            <table>
+            <table data-bind="visible: $root.CompletedTodos().length > 0">
                 <tr>
                     <th>Description</th>
                     <th>Is Complete?</th>
                     <th></th>
                     <th></th>
                 </tr>
-                <tbody>
-                <tr>
-                    <td><span></span></td>
-                    <td><input type="checkbox" /></td>
-                    <td><button>Update</button></td>
-                </tr>
+                <tbody data-bind="foreach: $root.CompletedTodos">
+                    <tr>
+                        <td><span data-bind="text: description"></span></td>
+                        <td><input type="checkbox" data-bind="checked: isComplete"/></td>
+                        <td><button data-bind="click: $root.update.bind($data)">Update</button></td>
+                    </tr>
                 </tbody>
             </table>
 
